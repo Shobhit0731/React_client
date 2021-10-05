@@ -1,2 +1,0 @@
-# react-client
-# front-end
