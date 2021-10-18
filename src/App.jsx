@@ -1,5 +1,6 @@
 import React from 'react';
-import TextFieldDemo from './pages/TextFieldDemo/TextFieldDemo';
+// eslint-disable-next-line import/named
+import { TextFieldDemo } from './pages';
 
 function App() {
   return (
