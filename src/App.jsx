@@ -1,11 +1,13 @@
 import React from 'react';
+import InputDemo from './pages/inputDemo';
 // eslint-disable-next-line import/named
-import { TextFieldDemo } from './pages';
+// import { TextFieldDemo } from './pages';
 
 function App() {
   return (
     <div>
-      <TextFieldDemo />
+      {/* <TextFieldDemo /> */}
+      <InputDemo />
     </div>
   );
 }
