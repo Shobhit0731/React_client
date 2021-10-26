@@ -1,13 +1,13 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import React from 'react';
-import InputDemo from './pages/inputDemo';
-// eslint-disable-next-line import/named
-// import { TextFieldDemo } from './pages';
+import Trainee from './pages/Trainee/Trainee';
 
 function App() {
   return (
-    <div>
-      {/* <TextFieldDemo /> */}
-      <InputDemo />
+    <div className="App">
+      <header className="App-header">
+        <Trainee />
+      </header>
     </div>
   );
 }
