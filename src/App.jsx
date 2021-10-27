@@ -1,13 +1,19 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable import/named */
 import React from 'react';
-import Trainee from './pages/Trainee/Trainee';
+import CssBaseline from '@mui/material/CssBaseline';
+import { Login, Navbar, Trainee } from './pages';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      <CssBaseline>
+        <Navbar />
+        {/* <InputDemo /> */}
+        {/* <TextFieldDemo /> */}
+        {/* <ChildrenDemo /> */}
         <Trainee />
-      </header>
+        <Login />
+      </CssBaseline>
     </div>
   );
 }
