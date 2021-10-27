@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import {
   SelectField, RadioGroup, TextField, Button,
-} from '../../components/index';
+} from '../../components';
 import { btnContainer, inputDemoContainer, btnStyle } from './style';
 import {
   SELECT_OPTIONS, RADIO_OPTIONS, DEFAULT_SELECT, CRICKET_VALUE,
