@@ -4,7 +4,7 @@ import { ThemeProvider } from '@material-ui/core';
 import Text from '../../components/Math/Math';
 import Theme from '../../theme';
 
-export default class ChildrenDemo extends React.Component {
+class ChildrenDemo extends React.Component {
   Result() {
     let { result } = this.state;
     result = '';
@@ -65,3 +65,5 @@ export default class ChildrenDemo extends React.Component {
     );
   }
 }
+
+export default ChildrenDemo;
