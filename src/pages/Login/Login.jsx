@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import {
   Card, TextField, IconButton, CardContent, Button, Typography,
 } from '@mui/material';
+import Avatar from '@mui/material/Avatar';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import InputAdornment from '@mui/material/InputAdornment';
 import EmailIcon from '@mui/icons-material/Email';
 import Visibility from '@mui/icons-material/Visibility';
@@ -77,7 +79,9 @@ const Login = () => {
           display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',
         }}
         >
-          <img height="50" src="/lock.jpg" alt="not found" />
+          <Avatar sx={{ m: 1, bgcolor: 'rgb(237,68,66)' }}>
+            <LockOutlinedIcon />
+          </Avatar>
           <Typography> Login </Typography>
           <br />
           <TextField
