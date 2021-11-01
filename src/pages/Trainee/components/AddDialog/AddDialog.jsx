@@ -126,7 +126,7 @@ const AddDialog = () => {
         variant="outlined"
         onClick={handleClickOpen}
       >
-        ADD TRAINEE
+        ADD TRAINEE LIST
       </Button>
       <Dialog fullWidth maxWidth="md" open={open} onClose={handleClose}>
         <DialogTitle>Add Trainee</DialogTitle>

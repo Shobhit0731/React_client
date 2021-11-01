@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Button from '@mui/material/Button';
-import AddIcon from '@mui/icons-material/Add';
 import { Route, Switch, Link } from 'react-router-dom';
 import { AddDialog } from './components';
 import { trainees } from './data';
@@ -11,9 +9,6 @@ const TraineeList = (props) => {
   const { match: { path } } = props;
   const [openDialog, setOpenDialog] = useState(false);
 
-  const handleClickOpen = () => {
-    setOpenDialog(true);
-  };
   const handleOnClose = () => {
     setOpenDialog(false);
   };
@@ -25,9 +20,6 @@ const TraineeList = (props) => {
         path={path}
         component={() => (
           <div>
-            <Button variant="outlined" startIcon={<AddIcon />} onClick={handleClickOpen}>
-              ADD TRAINEE LIST
-            </Button>
             <AddDialog open={openDialog} onClose={handleOnClose} />
             {trainees.map((item, idx) => {
               const { name, id } = item;
