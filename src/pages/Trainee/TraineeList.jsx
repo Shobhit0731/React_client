@@ -5,6 +5,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { StickyHeadTable } from '../../components';
 import { AddDialog } from './components';
 import { trainees } from './data';
+import getFormattedDate from './TraineeDetail';
 
 const tableData = [
   {
@@ -15,6 +16,12 @@ const tableData = [
   {
     field: 'email',
     label: 'Eamil Address',
+  },
+  {
+    field: 'createdAt',
+    label: 'Date',
+    align: 'right',
+    format: getFormattedDate,
   },
 ];
 
