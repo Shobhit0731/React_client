@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChildrenDemo } from './pages';
+import { InputDemo } from './pages';
 // eslint-disable-next-line import/named
 // import { TextFieldDemo } from './pages';
 
@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       {/* <TextFieldDemo /> */}
-      <ChildrenDemo />
+      <InputDemo />
     </div>
   );
 }
