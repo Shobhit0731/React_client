@@ -1,5 +1,5 @@
 import React from 'react';
-import InputDemo from './pages/InputDemo';
+import { InputDemo } from './pages';
 // eslint-disable-next-line import/named
 // import { TextFieldDemo } from './pages';
 
