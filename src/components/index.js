@@ -5,3 +5,4 @@ export { default as RadioGroup } from './RadioGroup';
 export { default as SelectField } from './SelectField';
 export { default as Button } from './Button';
 export { Math } from './Math';
+export { StickyHeadTable } from './Table';
