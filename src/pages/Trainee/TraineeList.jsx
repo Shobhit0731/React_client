@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-// import { useHistory } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import { StickyHeadTable } from '../../components';
 import { AddDialog } from './components';
 import { trainees } from './data';
-import getFormattedDate from './TraineeDetail';
+import { toUpperCase, getDateFormatted } from '../../lib/utils/math';
 
 const tableData = [
   {
@@ -16,12 +15,13 @@ const tableData = [
   {
     field: 'email',
     label: 'Eamil Address',
+    format: toUpperCase,
   },
   {
     field: 'createdAt',
     label: 'Date',
     align: 'right',
-    format: getFormattedDate,
+    format: getDateFormatted,
   },
 ];
 
@@ -38,7 +38,15 @@ const TraineeList = () => {
     email: '',
   });
 
-  // const history = useHistory();
+  const [order, setOrder] = useState('asc');
+  const [orderBy, setOrderBy] = useState('');
+
+  const handleSort = (event, property) => {
+    const isAsc = orderBy === property && order === 'asc';
+    setOrder(isAsc ? 'desc' : 'asc');
+    setOrderBy(property);
+  };
+
   const [loader, setLoader] = useState(false);
 
   const timer = useRef();
@@ -125,6 +133,10 @@ const TraineeList = () => {
         id="table1"
         data={traineesData.traineeArr}
         columns={tableData}
+        order={order}
+        orderBy={orderBy}
+        onSort={handleSort}
+        compPath="/trainee"
       />
     </div>
   );

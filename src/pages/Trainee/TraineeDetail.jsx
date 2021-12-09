@@ -1,7 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import moment from 'moment';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -12,12 +11,11 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { grey } from '@mui/material/colors';
 import { trainees } from './data';
+import { getDateFormatted } from '../../lib/utils/math';
 // import { PageNotFound } from '..';
 
 const TraineeDetail = (props) => {
   const { match: { id } } = props;
-
-  const getDateFormatted = (createdAt) => moment(createdAt).format('dddd, MMMM Do YYYY, h:mm:ss a');
 
   const history = useHistory();
 

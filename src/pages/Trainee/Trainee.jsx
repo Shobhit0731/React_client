@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
-import { AddDialog } from './components';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Route, Switch } from 'react-router-dom';
+import { TraineeList, TraineeDetail } from '.';
 
-const Trainee = () => {
-  const [openDialog, setOpenDialog] = useState(false);
-
-  const handleOnClose = () => {
-    setOpenDialog(false);
-  };
+const Trainee = (props) => {
+  const { match: { path } } = props;
 
   return (
-    <div>
-      <AddDialog open={openDialog} onClose={handleOnClose} />
-    </div>
+    <Switch>
+      <Route exact path={path} component={TraineeList} />
+      <Route
+        exact
+        path={`${path}/:id`}
+        component={(match) => <TraineeDetail match={match.match.params} />}
+      />
+    </Switch>
   );
+};
+Trainee.propTypes = {
+  match: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 export default Trainee;

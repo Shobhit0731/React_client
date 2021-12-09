@@ -7,3 +7,4 @@ export const getNextRoundRobin = (total, current) => {
   return current + 1;
 };
 export const getDateFormatted = (createdAt) => moment(createdAt).format('dddd, MMMM Do YYYY, h:mm:ss a');
+export const toUpperCase = (value) => value.toUpperCase();
