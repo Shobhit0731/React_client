@@ -1,17 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import TableContainer from '@material-ui/core/TableContainer';
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
-import TableBody from '@material-ui/core/TableBody';
-import Button from '@mui/material/Button';
 import TableSortLabel from '@mui/material/TableSortLabel';
-import Box from '@mui/material/Box';
+import TableBody from '@material-ui/core/TableBody';
+import TablePagination from '@mui/material/TablePagination';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import { visuallyHidden } from '@mui/utils';
 
 const useStyles = makeStyles({
@@ -86,12 +88,20 @@ const StickyHeadTable = (props) => {
     id,
     data,
     columns,
-    order,
+    actions,
     orderBy,
+    order,
     onSort,
     compPath,
+    rowsPerPageOptions,
+    count,
+    rowsPerPage,
+    page,
+    onChangePage,
+    onRowsPerPageChange,
   } = props;
   const classes = useStyles();
+
   const createSortHandler = (property) => (event) => {
     onSort(event, property);
   };
@@ -135,6 +145,7 @@ const StickyHeadTable = (props) => {
           </TableHead>
           <TableBody>
             {stableSort(data, getComparator(order, orderBy))
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((item) => (
                 <StyledTableRow
                   key={item.id}
@@ -155,11 +166,31 @@ const StickyHeadTable = (props) => {
                       </StyledTableCell>
                     );
                   })}
+                  <StyledTableCell align="center" onClick={(e) => e.preventDefault()}>
+                    {actions.map((action) => (
+                      <IconButton
+                        onClick={() => action.handler(item)}
+                        size="small"
+                        sx={{ color: 'rgb(32,32,32)' }}
+                      >
+                        {action.icon}
+                      </IconButton>
+                    ))}
+                  </StyledTableCell>
                 </StyledTableRow>
               ))}
           </TableBody>
         </Table>
       </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={rowsPerPageOptions}
+        component="div"
+        count={count}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={onChangePage}
+        onRowsPerPageChange={onRowsPerPageChange}
+      />
     </Paper>
   );
 };
@@ -167,11 +198,6 @@ const StickyHeadTable = (props) => {
 ButtonLink.propTypes = {
   link: PropTypes.string.isRequired,
   icon: PropTypes.string.isRequired,
-};
-
-StickyHeadTable.defaultProps = {
-  order: 'asc',
-  orderBy: '',
 };
 
 StickyHeadTable.propTypes = {
@@ -188,10 +214,20 @@ StickyHeadTable.propTypes = {
     align: PropTypes.string,
     format: PropTypes.func,
   })).isRequired,
-  order: PropTypes.oneOf(['asc', 'desc']),
-  orderBy: PropTypes.string,
+  actions: PropTypes.arrayOf(PropTypes.shape({
+    icon: PropTypes.instanceOf(Element),
+    handler: PropTypes.func,
+  })).isRequired,
+  orderBy: PropTypes.string.isRequired,
+  order: PropTypes.oneOf(['asc', 'desc']).isRequired,
   onSort: PropTypes.func.isRequired,
   compPath: PropTypes.string.isRequired,
+  rowsPerPageOptions: PropTypes.number.isRequired,
+  count: PropTypes.number.isRequired,
+  rowsPerPage: PropTypes.number.isRequired,
+  page: PropTypes.number.isRequired,
+  onChangePage: PropTypes.func.isRequired,
+  onRowsPerPageChange: PropTypes.func.isRequired,
 };
 
 export default StickyHeadTable;
